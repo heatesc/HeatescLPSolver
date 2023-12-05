@@ -2,10 +2,10 @@
 #define COMMON_HPP
 
 // returned by setters
-enum setStatus
+enum class SetStatus
 {
-    SET_SUCCESS,
-    SET_FAILURE
+    SUCCESS,
+    FAILURE
 };
 
 #endif

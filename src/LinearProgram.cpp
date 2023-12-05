@@ -2,34 +2,34 @@
 #include "common.hpp"
 
 // SETTERS
-setStatus LinearProgram::setConstraintMatrix(const std::vector<std::vector<double>>& constraintMatrix) 
+SetStatus LinearProgram::setConstraintMatrix(const std::vector<std::vector<double>>& constraintMatrix) 
 {
     this->constraintMatrix = constraintMatrix;
-    return SET_SUCCESS; // Assuming success, add actual logic as needed
+    return SetStatus::SUCCESS; // Assuming success, add actual logic as needed
 }
 
-setStatus LinearProgram::setConstraintVector(const std::vector<double>& constraintVector) 
+SetStatus LinearProgram::setConstraintVector(const std::vector<double>& constraintVector) 
 {
     this->constraintVector = constraintVector;
-    return SET_SUCCESS; // Similarly, add logic for success/failure
+    return SetStatus::SUCCESS; // Similarly, add logic for success/failure
 }
 
-setStatus LinearProgram::setOptimisationMode(optimisationMode mode) 
+SetStatus LinearProgram::setOptimisationMode(OptimisationMode mode) 
 {
     this->mode = mode;
-    return SET_SUCCESS;
+    return SetStatus::SUCCESS;
 }
 
-setStatus LinearProgram::setContinuousVariables(const std::vector<std::string>& variables) 
+SetStatus LinearProgram::setContinuousVariables(const std::vector<std::string>& variables) 
 {
     this->continuousVariables = variables;
-    return SET_SUCCESS;
+    return SetStatus::SUCCESS;
 }
 
-setStatus LinearProgram::setDiscreteVariables(const std::vector<std::string>& variables) 
+SetStatus LinearProgram::setDiscreteVariables(const std::vector<std::string>& variables) 
 {
     this->discreteVariables = variables;
-    return SET_SUCCESS;
+    return SetStatus::SUCCESS;
 }
 
 // GETTERS
@@ -43,7 +43,7 @@ std::vector<double> LinearProgram::getConstraintVector()
     return this->constraintVector;
 }
 
-optimisationMode LinearProgram::getOptimisationMode() 
+OptimisationMode LinearProgram::getOptimisationMode() 
 {
     return this->mode;
 }
