@@ -8,7 +8,7 @@ HEAD_DIR = headers
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-TARGET = $(BIN_DIR)/solver
+TARGET = $(BIN_DIR)/hlps
 
 .PHONY: all clean test run
 
@@ -25,8 +25,7 @@ test:
 	./testing/run_tests.sh
 
 run:
-	./bin/solver
+	./bin/hlps
 
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
-
