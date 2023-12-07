@@ -1,17 +1,21 @@
 #include "LinearProgram.hpp"
 #include "common.hpp"
 
+using namespace std;
+
+LinearProgram::LinearProgram() {};
+
 // SETTERS
-SetStatus LinearProgram::setConstraintMatrix(const std::vector<std::vector<double>>& constraintMatrix) 
+SetStatus LinearProgram::setConstraintMatrix(const vector<vector<double>>& constraintMatrix) 
 {
     this->constraintMatrix = constraintMatrix;
-    return SetStatus::SUCCESS; // Assuming success, add actual logic as needed
+    return SetStatus::SUCCESS;
 }
 
-SetStatus LinearProgram::setConstraintVector(const std::vector<double>& constraintVector) 
+SetStatus LinearProgram::setConstraintVector(const vector<double>& constraintVector) 
 {
     this->constraintVector = constraintVector;
-    return SetStatus::SUCCESS; // Similarly, add logic for success/failure
+    return SetStatus::SUCCESS;
 }
 
 SetStatus LinearProgram::setOptimisationMode(OptimisationMode mode) 
@@ -20,40 +24,46 @@ SetStatus LinearProgram::setOptimisationMode(OptimisationMode mode)
     return SetStatus::SUCCESS;
 }
 
-SetStatus LinearProgram::setContinuousVariables(const std::vector<std::string>& variables) 
+SetStatus LinearProgram::setContinuousVariables(const vector<string>& variables) 
 {
     this->continuousVariables = variables;
     return SetStatus::SUCCESS;
 }
 
-SetStatus LinearProgram::setDiscreteVariables(const std::vector<std::string>& variables) 
+SetStatus LinearProgram::setDiscreteVariables(const vector<string>& variables) 
 {
     this->discreteVariables = variables;
     return SetStatus::SUCCESS;
 }
 
+SetStatus LinearProgram::setObjectiveCoefficients(const vector<double>& objectiveCoefficients) 
+{
+    this->objectiveCoefficients = objectiveCoefficients;
+    return SetStatus::SUCCESS;
+}
+
 // GETTERS
-std::vector<std::vector<double>> LinearProgram::getConstraintMatrix() 
+vector<vector<double>> LinearProgram::getConstraintMatrix() const
 {
     return this->constraintMatrix;
 }
 
-std::vector<double> LinearProgram::getConstraintVector() 
+vector<double> LinearProgram::getConstraintVector() const
 {
     return this->constraintVector;
 }
 
-OptimisationMode LinearProgram::getOptimisationMode() 
+OptimisationMode LinearProgram::getOptimisationMode() const
 {
     return this->mode;
 }
 
-std::vector<std::string> LinearProgram::getContinuousVariables() 
+vector<string> LinearProgram::getContinuousVariables() const
 {
     return this->continuousVariables;
 }
 
-std::vector<std::string> LinearProgram::getDiscreteVariables() 
+vector<string> LinearProgram::getDiscreteVariables() const
 {
     return this->discreteVariables;
 }
