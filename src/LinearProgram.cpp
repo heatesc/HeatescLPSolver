@@ -67,3 +67,8 @@ vector<string> LinearProgram::getDiscreteVariables() const
 {
     return this->discreteVariables;
 }
+
+vector<double> LinearProgram::getObjectiveCoefficients() const
+{
+    return this->objectiveCoefficients;
+}

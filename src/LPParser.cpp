@@ -124,6 +124,12 @@ ParseStatus LPParser::parseOptimisationMode(ifstream& file, OptimisationMode& mo
 {
     string line;
     getline(file, line);
+    if (line != "OPTIMISATION MODE")
+    {   
+        cerr << "Error: optimisation mode line not found" << endl;
+        return ParseStatus::FAILURE;
+    }
+    getline(file, line);
     if (line == "max")
     {
         mode = OptimisationMode::MAX;
@@ -143,7 +149,12 @@ ParseStatus LPParser::parseContinuousVariables(ifstream& file, vector<string>& v
 {
     string line;
     getline(file, line);
-
+    if (line != "CONTINUOUS VARIABLES")
+    {
+        cerr << "Error: continuous variables line not found" << endl;
+        return ParseStatus::FAILURE;
+    }
+    getline(file, line);
     // Check if variables line is "-". This means there are no continuous variables.
     if (line == "-")
     {
@@ -178,7 +189,12 @@ ParseStatus LPParser::parseDiscreteVariables(ifstream& file, vector<string>& var
     string line;
     getline(file, line);
     string variable;
-
+    if (line != "DISCRETE (BINARY) VARIABLES")
+    {
+        cerr << "Error: discrete variables line not found" << endl;
+        return ParseStatus::FAILURE;
+    }
+    getline(file, line);
     // Check if variables line is "-". This means there are no 
     // continuous variables.
     if (line == "-")
@@ -213,7 +229,12 @@ ParseStatus LPParser::parseObjectiveCoefficients(ifstream& file, vector<double>&
 {
     string line;
     getline(file, line);
-
+    if (line != "OBJECTIVE COEFFICIENTS")
+    {
+        cerr << "Error: objective coefficients line not found" << endl;
+        return ParseStatus::FAILURE;
+    }
+    getline(file, line);
     // check if line is "-". This means there are no 
     // objective coefficients.
     if (line == "-")
@@ -250,7 +271,12 @@ ParseStatus LPParser::parseConstraintsMatrix(ifstream& file, vector<vector<doubl
 {
     string line;
     vector<double> row;
-
+    getline(file, line);
+    if (line != "CONSTRAINTS MATRIX")
+    {
+        cerr << "Error: constraints matrix line not found" << endl;
+        return ParseStatus::FAILURE;
+    }
     // read the file line by line until the line "END OF CONSTRAINTS MATRIX" is reached
     while (getline(file, line))
     {
@@ -290,7 +316,12 @@ ParseStatus LPParser::parseConstraintsVector(ifstream& file, vector<double>& vec
 {
     string line;
     getline(file, line);
-
+    if (line != "CONSTRAINTS VECTOR")
+    {
+        cerr << "Error: constraints vector line not found" << endl;
+        return ParseStatus::FAILURE;
+    }  
+    getline(file, line);
     // check if line is "-". This means there are no 
     // constraints.
     if (line == "-")
